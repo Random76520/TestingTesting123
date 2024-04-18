@@ -27,7 +27,35 @@ class UniqueCollectionTest {
         collection.addItem(Item("item1"))
         collection.addItem(Item("Item2"))
 
-        assert (collection.size() == 2)
+        assert(collection.size() == 2)
+    }
+
+    @Test
+    fun getItem() {
+        val item0 = Item("Item 00")
+        val item1 = Item("Item 01")
+
+        collection.addItem(item0)
+        collection.addItem(item1)
+
+        assertEquals(item0, collection.get(0))
+        assertEquals(item1, collection.get(1))
+    }
+
+    @Test
+    fun removeItem() {
+        val item0 = Item("Item 00")
+        val item1 = Item("Item 01")
+
+        collection.addItem(item0)
+        collection.addItem(item1)
+
+        val preRemoval = collection.size()
+        collection.remove(item0)
+        val postRemoval = collection.size()
+
+        assert(1 == postRemoval && 2 == preRemoval)
+        assertEquals(item0, collection.get(0))
     }
 
     @Test
